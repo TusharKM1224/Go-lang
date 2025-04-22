@@ -8,15 +8,15 @@ import (
 )
 
 const (
-	whatsappAPIURL = "https://graph.facebook.com/v22.0/608308972363025/messages"
-	accessToken    = "EAA7GdZCQyzZBcBO4LFbvvxxduCXZBaw4MJ0IYrHZA26Qwu8Xlj6yZCFpwLj29ZAAm4JFX7uDp5NVDgZAhmKN3t9YfLzWUBZBKVfQoiZClMxGGRvZCM2J00SmioHwxsgCKRnSb2A5CZCnE4v0wjvSjQUNMlRgBGMy4IpDFC70myujKpK5ULSC2g2alBzr0VPFEJZCuc93jyXCFEnefqg5cmZCdbFbqZB6mgHxw4p0s1rAsZD"
+	whatsappAPIURL = "https://graph.facebook.com/v22.0/<PhoneID>/messages"
+	accessToken    = "<Access Token>"
 )
 
 func sendPropertyInquiry(toPhoneNumber string, inquiryData map[string]string) {
 	client := resty.New()
 
 	resp, err := client.R().
-		SetHeader("Authorization", "Bearer "+accessToken).
+		SetHeader("Authorization", "Bearer "+ accessToken).
 		SetHeader("Content-Type", "application/json").
 		SetBody(map[string]interface{}{
 			"messaging_product": "whatsapp",
@@ -24,7 +24,7 @@ func sendPropertyInquiry(toPhoneNumber string, inquiryData map[string]string) {
 			"to":                toPhoneNumber,
 			"type":              "template",
 			"template": map[string]interface{}{
-				"name": "book_your_property_template", // Replace with your approved template name
+				"name": "<template_name>", // Replace with your approved template name
 				"language": map[string]string{
 					"code": "en", // or "en_US" depending on your template
 				},
@@ -68,5 +68,5 @@ func main() {
 		"date":      "2025-04-10",
 	}
 
-	sendPropertyInquiry("918009688506", inquiryData)
+	sendPropertyInquiry("<recieverPhone>", inquiryData)
 }
