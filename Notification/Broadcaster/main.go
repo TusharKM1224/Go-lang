@@ -5,6 +5,7 @@ import (
 
 	server "github.com/TusharKM1224/Server"
 	types "github.com/TusharKM1224/Types"
+
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -15,7 +16,7 @@ func main() {
 	if err != nil {
 		fmt.Print("Error : %w", err)
 	}
-	handlerInstance := server.Initiateserver(db)
+	_ = server.Initiateserver(db)
 
 }
 
